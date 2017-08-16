@@ -1,0 +1,41 @@
+{% extends 'calcs/base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <h2>Cable axis coordinates</h2>
+</div>
+<div class="row">
+    <h3>{{ layout.pk }} {{ layout.layout_name }}</h3>
+</div>
+<div class="row">
+    <table class='table table-hover'>
+    <thead>
+        <tr>
+            <th>Cable</th>
+            <th>x</th>
+            <th>y</th>
+        </tr>
+    </thead>
+    {% for cable, details in coords %}
+    <tbody>
+        <tr>
+            <td>{{ details.name }}</td>
+            <td>{{ details.x }}</td>
+            <td>{{ details.y }}</td>
+        </tr>
+    </tbody>
+    {% endfor %}
+    </table>
+</div>
+<div class="row">
+    <h2>Plot of cables</h2>
+    <h5>...coming soon...</h5>
+</div>
+<div class="row">
+    <form action="{% url 'calcs:edit_layout' layout.id %}" method="get">
+        <button type="submit" class="btn btn-primary">Change layout</button>
+    </form>
+</div>
+
+{% endblock %}

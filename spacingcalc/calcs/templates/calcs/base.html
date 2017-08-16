@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculation results</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-+ENW/yibaokMnme+vBLnHMphUYxHs34h9lpdbSLuAwGkOKFRl4C34WkjazBtb7eT" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'calcs:create_layout' %}">New Layout</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <ul class="nav nav-sidebar">
+                    {% if latest_layout_list %}
+                        {% for layout in latest_layout_list %}
+                            <li>
+                                <a href={% url 'calcs:display_results' layout.id %}>{{ layout.id}} {{ layout.layout_name }}</a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li>
+                            No layouts available.
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="col-sm-9">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+</html>

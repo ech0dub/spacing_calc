@@ -1,0 +1,69 @@
+{% extends 'calcs/base.html' %}
+
+{% block content %}
+
+<div class="row">
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <h2>Installation layout details</h2>
+</div>
+<div class="row">
+    <form class="form-horizontal" action="{% url 'calcs:save_layout' layout.id %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <div class="form-group">
+                <label for="layout_name" class="col-lg-3 control-label">Layout description</label>
+                <div class="col-lg-9">
+                    <input class="form-control" id="layout_name" placeholder="layout_name" type="text" value="{{ layout.layout_name }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="depth_to_top_m" class="col-lg-3 control-label">Depth to top of cable (m)</label>
+                <div class="col-lg-9">
+                    <input class="form-control" id="depth_to_top_m" placeholder="depth_to_top_m" type="text" value={{ layout.depth_to_top_m }}>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="arrangement" class="col-lg-3 control-label">Arrangement</label>
+                <div class="col-lg-9">
+                    <select class="form-control" id="arrangement" onchange="hideFunction()">
+                        {% if layout.arrangement == "spaced trefoil" %}
+                            <option value="spaced trefoil" selected>spaced trefoil</option>
+                            <option value="touching trefoil">touching trefoil</option>
+                        {% elif layout.arrangement == "touching trefoil" %}
+                            <option value="spaced trefoil">spaced trefoil</option>
+                            <option value="touching trefoil" selected>touching trefoil</option>
+                        {% endif %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" id="cab_space_grp" style="display:none">
+                <label for="cab_space" class="col-lg-3 control-label">Cable spacing (m)</label>
+                <div class="col-lg-9">
+                    <input class="form-control" id="cab_space" placeholder="cab_space" type="text" value={{ layout.cable_spacing_m }}>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="outer_diameter_m" class="col-lg-3 control-label">Cable outer diameter (m)</label>
+                <div class="col-lg-9">
+                    <input class="form-control" id="outer_diameter_m" placeholder="cab_space" type="text" value={{ layout.outer_diameter_m }}>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save and Show Results</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<script>
+function hideFunction() {
+    var x = document.getElementById('cab_space_grp');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+{% endblock %}
