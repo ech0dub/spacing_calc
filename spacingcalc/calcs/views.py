@@ -29,12 +29,12 @@ def save_layout(request, layout_id):
         layout.layout_name = request.POST['layout_name']
         layout.depth_to_top_m = request.POST['depth_to_top_m']
         layout.arrangement = request.POST['arrangement']
-        layout.cable_spacing_m = request.POST['cable_spacing_m']
         layout.outer_diameter_m = request.POST['outer_diameter_m']
+        layout.cable_spacing_m = request.POST['cable_spacing_m']
 
     except (KeyError, Layout.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(request, 'calcs/edit_layout.html',
+        # Redisplay the layout data input form.
+        return render(request, 'calcs/layout.html',
                       {'layout': layout,
                        'error_message': "You didn't complete all layout options.",
                        })

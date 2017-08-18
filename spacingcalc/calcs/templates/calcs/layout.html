@@ -13,19 +13,19 @@
             <div class="form-group">
                 <label for="layout_name" class="col-lg-3 control-label">Layout description</label>
                 <div class="col-lg-9">
-                    <input class="form-control" id="layout_name" placeholder="layout_name" type="text" value="{{ layout.layout_name }}">
+                    <input class="form-control" id="layout_name" name="layout_name" placeholder="layout_name" type="text" value="{{ layout.layout_name }}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="depth_to_top_m" class="col-lg-3 control-label">Depth to top of cable (m)</label>
                 <div class="col-lg-9">
-                    <input class="form-control" id="depth_to_top_m" placeholder="depth_to_top_m" type="text" value={{ layout.depth_to_top_m }}>
+                    <input class="form-control" id="depth_to_top_m" name="depth_to_top_m" placeholder="depth_to_top_m" type="text" value={{ layout.depth_to_top_m }}>
                 </div>
             </div>
             <div class="form-group">
                 <label for="arrangement" class="col-lg-3 control-label">Arrangement</label>
                 <div class="col-lg-9">
-                    <select class="form-control" id="arrangement" onchange="hideFunction()">
+                    <select class="form-control" id="arrangement" name="arrangement" onchange="hideFunction()">
                         {% if layout.arrangement == "spaced trefoil" %}
                             <option value="spaced trefoil" selected>spaced trefoil</option>
                             <option value="touching trefoil">touching trefoil</option>
@@ -37,15 +37,15 @@
                 </div>
             </div>
             <div class="form-group" id="cab_space_grp" style="display:none">
-                <label for="cab_space" class="col-lg-3 control-label">Cable spacing (m)</label>
+                <label for="cable_spacing_m" class="col-lg-3 control-label">Cable spacing (m)</label>
                 <div class="col-lg-9">
-                    <input class="form-control" id="cab_space" placeholder="cab_space" type="text" value={{ layout.cable_spacing_m }}>
+                    <input class="form-control" id="cable_spacing_m" name="cable_spacing_m" placeholder="cab_space" type="text" value={{ layout.cable_spacing_m }}>
                 </div>
             </div>
             <div class="form-group">
                 <label for="outer_diameter_m" class="col-lg-3 control-label">Cable outer diameter (m)</label>
                 <div class="col-lg-9">
-                    <input class="form-control" id="outer_diameter_m" placeholder="cab_space" type="text" value={{ layout.outer_diameter_m }}>
+                    <input class="form-control" id="outer_diameter_m" name="outer_diameter_m" placeholder="cab_space" type="text" value={{ layout.outer_diameter_m }}>
                 </div>
             </div>
             <div class="form-group">
