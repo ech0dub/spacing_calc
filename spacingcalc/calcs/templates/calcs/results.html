@@ -31,13 +31,14 @@
 <div class="row">
     <h2>Plot of cables</h2>
 
-    {% load static %}
-    <img src="{% static "calcs/this_plot.svg" %}" alt="plot of cables"/>
+    <img src="/static/calcs/this_plot.svg" alt="plot of cables"/>
 
     {% comment %}
     <h5>...coming soon...</h5>
-    this works:
-    <img src=/static/calcs/this_plot.svg alt="plot of cables">
+
+
+    {% load static %}
+    <img src="{% static "calcs/this_plot.svg" %}" alt="plot of cables"/>
 
     {% endcomment %}
 </div>
