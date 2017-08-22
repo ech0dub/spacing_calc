@@ -30,17 +30,7 @@
 </div>
 <div class="row">
     <h2>Plot of cables</h2>
-
-    <img src="/static/calcs/this_plot.svg" alt="plot of cables"/>
-
-    {% comment %}
-    <h5>...coming soon...</h5>
-
-
-    {% load static %}
-    <img src="{% static "calcs/this_plot.svg" %}" alt="plot of cables"/>
-
-    {% endcomment %}
+    <img src="/media/calcs/this_plot.svg" alt="plot of cables" />
 </div>
 <div class="row">
     <form action="{% url 'calcs:edit_layout' layout.id %}" method="get">
