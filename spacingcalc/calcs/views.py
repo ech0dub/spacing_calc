@@ -151,7 +151,7 @@ def make_graphic(layout):
     plt.axhline(y=0.0, color='g', linestyle='-')
 
     # need to debug to get this working without hard-coded path to this_plot.svg
-    plot_name = os.path.join(settings.MEDIA_ROOT, 'this_plot.svg')
-    fig.savefig(filename=plot_name, format='svg')
+    plot_name = os.path.join(settings.STATIC_ROOT, 'this_plot.svg')
+    fig.savefig(filename=plot_name, format='svg', bbox_inches='tight')
     # plt.show()
     return plot_name

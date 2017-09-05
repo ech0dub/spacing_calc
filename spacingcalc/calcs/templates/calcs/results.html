@@ -30,7 +30,9 @@
 </div>
 <div class="row">
     <h2>Plot of cables</h2>
-    <img src="/media/calcs/this_plot.svg" alt="plot of cables" />
+    {% load static %}
+    <img src="{% static "this_plot.svg" %}" alt="plot of cables" />
+
 </div>
 <div class="row">
     <form action="{% url 'calcs:edit_layout' layout.id %}" method="get">

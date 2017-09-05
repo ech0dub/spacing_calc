@@ -15,15 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-
-# the following two lines and the last IF statement are needed to redirect the runserver dev server to the media files
 from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^calcs/', include('calcs.urls')),
     url(r'^admin/', admin.site.urls),
 ]
 
+# the following IF statement is needed to redirect the runserver dev server to the static files
 if settings.DEBUG is True:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    urlpatterns += staticfiles_urlpatterns()
